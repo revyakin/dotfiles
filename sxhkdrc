@@ -1,0 +1,100 @@
+#!/usr/bin/env sh
+
+# Lock screen
+super + Delete
+    light-locker-command -l
+
+
+# Start terminal
+super + Return
+    xfce4-terminal
+
+# Take screenshot
+Print
+    xfce4-screenshooter
+
+
+# Application launcher
+super + d
+    rofi -show run
+
+
+# Close window
+super + q
+    bspc node -c
+
+
+# Swap with biggest
+super + g
+    bspc node -s biggest.local
+
+
+# Select windows, or move
+super + {_,shift + }{h,j,k,l}
+    bspwm-select-window.sh -{f,s} {west,south,north,east}
+
+
+# Resize window
+super + control + {h,j,k,l}
+    bspwm-resize.sh {left,down,up,right}
+
+
+# Focus or move window to desktops
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f, node -d} '^'{1,2,3,4,5,6,7,8,9,10}
+
+
+super + {_,shift + }{F1,F2,F3,F4,F5,F6,F7,F8,F9,F10}
+    bspc {desktop -f, node -d} '^'{11,12,13,14,15,16,17,18,19,20}
+
+
+super + e
+    bspc node @parent -R 90
+
+
+# Swithc between last windows
+super + Tab
+    bspc node -f last
+
+
+# Swithc between last desktops
+super + grave
+    bspc desktop -f last
+
+
+# Toggle fullscreen mode
+super + {f, space, t}
+    bspc node -t {'~fullscreen','~floating','~tiled'}
+
+
+# Desktop layout: Win+W - monocle, Win+E - tiled
+super + w
+    bspc desktop --layout next
+
+
+# Window gaps
+super + {KP_Multiply,KP_Add,KP_Subtract}
+    bspwm-gaps.sh {toggle,increase,decrease}
+
+#
+# Media keys
+#
+
+XF86AudioRaiseVolume
+    volume up
+
+XF86AudioLowerVolume
+    volume down
+
+XF86AudioMute
+    volume mute
+	
+XF86MonBrightnessDown
+    light -U 5 
+
+XF86MonBrightnessUp
+    light -A 5
+ 
+
+XF86Sleep
+    systemctl hibernate
