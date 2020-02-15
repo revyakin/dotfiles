@@ -1,0 +1,103 @@
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible              " be iMproved, required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'		" A universal set of defaults that
+					" (hopefully) everyone can agree on. 
+
+
+Plug 'chriskempson/base16-vim'		" Collection of cool color schemes
+
+
+Plug 'vim-airline/vim-airline'		" Draw a nice statusline at 
+Plug 'vim-airline/vim-airline-themes'	" the bottom of each window
+
+
+Plug 'Valloric/YouCompleteMe' 		" Code completion engine (C++/Rust and more)
+									" Requires addition action for setting up
+									" See installation guide on github
+
+
+Plug 'w0rp/ale'                 	" Asyncronus linting engine. Provides checking
+									" syntax and semantics.
+					
+
+Plug 'rust-lang/rust.vim'		" Rust language support
+Plug 'dag/vim-fish'        		" Fish language support
+
+
+Plug 'dusans/vim-hardmode'		" HardMode disables character-wise navigation
+								" (arrow keys, hjkl, PageUp, PageDown, etc.)
+
+
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+
+Plug 'Chiel92/vim-autoformat'
+
+Plug 'kovetskiy/sxhkd-vim'
+
+call plug#end()
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Look
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set t_Co=256
+set termguicolors
+
+let base16colorspace=256
+colorscheme base16-gruvbox-dark-medium
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set hidden
+
+set relativenumber
+set number
+
+set ignorecase
+set smartcase
+
+set sw=4
+set ts=4
+
+set mouse=a
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Airline plugin settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_powerline_fonts = 1
+let g:airline_theme='base16'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Rust settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:rustfmt_autosave = 1
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Python settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode_python = 'python3'
+" au BufWrite *.py :Autoformat
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Key bindings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
