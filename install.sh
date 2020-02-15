@@ -1,25 +1,17 @@
 #!/bin/bash
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-echo $BASEDIR
 
 function link() 
 {
 	src="${BASEDIR}/$1"
 	dst="$2"
 
+	echo "Linking '${src}' to '${dst}'"
 	ln -is "${src}" "${dst}"
 }
 
-# sxhkd
-link sxhkd ~/.config/sxhkd/sxhkdrc
+# BSPWM and SXHKD configs
+link sxhkdrc ~/.config/sxhkd/sxhkdrc
+link bspwmrc ~/.config/bspwm/bspwmrc
 
-# # vim
-# ln -s ${BASEDIR}/vimrc ~/.vimrc
-# ln -s ${BASEDIR}/vim/ ~/.vim
-# 
-# # zsh
-# ln -s ${BASEDIR}/zshrc ~/.zshrc
-# 
-# # git
-# ln -s ${BASEDIR}/gitconfig ~/.gitconfig
