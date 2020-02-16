@@ -24,16 +24,17 @@ function link()
 		return
 	fi
 
-	mkdir -p "$(dirname "${dst}")" && ln -s "${src}" "${dst}" \
+	mkdir -p "$(dirname "${dst}")" \
+		&& ln --symbolic --backup=numbered --interactive "${src}" "${dst}" \
 		&& echo -e "${okmsg} ${src} -> ${dst}" 1>&2 \
-		&& echo -e "${errmsg} ${src} -> ${dst}" 1>&2
+		|| echo -e "${errmsg} ${src} -> ${dst}" 1>&2
 }
 
 
-# BSPWM and SXHKD configs
-link sxhkdrc ~/.config/sxhkd/sxhkdrc
-link bspwmrc ~/.config/bspwm/bspwmrc
-link polybar ~/.config/polybar
+# DM configs
+link bspwm/sxhkdrc ~/.config/sxhkd/sxhkdrc
+link bspwm/bspwmrc ~/.config/bspwm/bspwmrc
+link bspwm/polybar ~/.config/polybar
 
 
 # VIM/Neovim configs
